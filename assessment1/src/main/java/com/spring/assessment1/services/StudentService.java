@@ -103,6 +103,15 @@ public class StudentService {
 
     }
 
+    public ResponseEntity<String> deleteAllExistingUsers() {
+        List<Student> student = repository.findAll();
+        if(student.isEmpty()) {
+            return new ResponseEntity("No user present", HttpStatus.BAD_REQUEST);
+        }
+        repository.deleteAll();
+        return new ResponseEntity("All students data deleted", HttpStatus.ACCEPTED);
+    }
+
     public List<GetAllUsersInfoDto> sameUserName(String name) {
         List<Long> ids = repository.fetchAllIdsOfUsers();
         if(ids.isEmpty()) {
