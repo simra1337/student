@@ -155,4 +155,19 @@ public class StudentService {
         return getAllUsersInfoDtoList;
     }
 
+    public List<GetAllUsersInfoDto> listUserById(Long id) {
+        Student student = repository.findById(id).orElse(null);
+        if(student == null) {
+            throw new UserNotFoundException("No user found with this id");
+        }
+        List<GetAllUsersInfoDto> getAllUsersInfoDtoList = new ArrayList<>();
+        List<Address> addresses = addressRepository.findAddressByUserId(id);
+
+        getAllUsersInfoDtoList.add(new GetAllUsersInfoDto(student.getId(), student.getFirstName(), student.getLastName(),
+                student.getCourse(), student.getContact(),
+                student.getFamilyDetails().getHometownCity(), student.getFamilyDetails().getFatherName(),
+                student.getFamilyDetails().getMotherName(), addresses));
+        return getAllUsersInfoDtoList;
+    }
+
 }
