@@ -49,6 +49,11 @@ public class StudentController {
         return service.listAllUsers();
     }
 
+    @GetMapping("/user/{id}")
+    List<GetAllUsersInfoDto> listById(@PathVariable(name = "id") Long id) {
+        return service.listUserById(id);
+    }
+
     @DeleteMapping("/delete-all")
     ResponseEntity<String> deleteAllUsers() {
         return service.deleteAllExistingUsers();
