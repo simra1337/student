@@ -49,6 +49,11 @@ public class StudentController {
         return service.listAllUsers();
     }
 
+    @DeleteMapping("/delete-all")
+    ResponseEntity<String> deleteAllUsers() {
+        return service.deleteAllExistingUsers();
+    }
+
     @GetMapping("/{name}")
     List<GetAllUsersInfoDto> sameUser(@PathVariable(name = "name") String name) {
         return service.sameUserName(name);
