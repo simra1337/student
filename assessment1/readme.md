@@ -35,7 +35,11 @@ APIs for CRUD Operations :
    URL : http://localhost:8080/delete/{id}
    METHOD : DELETE
 
-5. API to add different address of existing user :
+5. API to delete all users , 
+   URL : http://localhost:8080/delete-all
+   METHOD : DELETE
+
+6. API to add different address of existing user :
    http://localhost:8080/add-address/{id}
    METHOD : POST
 
